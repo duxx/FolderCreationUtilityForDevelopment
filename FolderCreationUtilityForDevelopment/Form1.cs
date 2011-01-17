@@ -43,16 +43,23 @@ namespace Structurer
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (! Directory.Exists(textBox1.Text))
+            try
             {
-                Directory.CreateDirectory(textBox1.Text);
+                if (!Directory.Exists(textBox1.Text))
+                {
+                    Directory.CreateDirectory(textBox1.Text);
+                }
+
+                basePath = currFolder = textBox1.Text + "\\";
+
+                foreach (string line in textBox2.Lines)
+                {
+                    handleLine(line);
+                }
             }
-
-            basePath = currFolder = textBox1.Text + "\\";
-
-            foreach (string line in textBox2.Lines)
+            catch (Exception ex)
             {
-                handleLine(line);
+                MessageBox.Show("The following error occured: " + ex.ToString(), "Folderizer - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,7 +95,7 @@ namespace Structurer
                         //webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(webClient_DownloadFileCompleted);
                         webClient.DownloadFileCompleted += (s, e) => 
                         {
-                            this.Text = "FolderCreationUtilityForDevelopment - Completed";
+                            this.Text = "Folderizer - Completed";
                             if (url.IndexOf(".zip") > 0)
                             {
                                 using (ZipFile zipFile = ZipFile.Read(currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1)))
@@ -122,9 +129,9 @@ namespace Structurer
             {
                 //Current changes +  a file
                 currFolder = basePath;
-                currFolder += line.Substring(0, line.IndexOf('/'));
+                currFolder += line.Substring(0, line.LastIndexOf('/'));
                 Directory.CreateDirectory(currFolder);
-                string line2 = line.Substring(line.IndexOf('/'));
+                string line2 = line.Substring(line.LastIndexOf('/'));
                 if (line.IndexOf(':') > 0)
                 {
                     string[] parts = line2.Split(':');

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FolderCreationUtilityForDevelopment")]
+[assembly: AssemblyTitle("Folderizer")]
 [assembly: AssemblyDescription("A folder structure generating app")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Antti Sand")]
-[assembly: AssemblyProduct("FolderCreationUtilityForDevelopment")]
+[assembly: AssemblyProduct("Folderizer")]
 [assembly: AssemblyCopyright("Copyright © Antti Sand 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
