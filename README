@@ -1,1 +1,7 @@
 This application is a clone of the Structurer app featured in net.tutsplus.com.
+
+The version 1.0.0.3 now supports nested folder structures and has some changes to it's UI based on Caio Dettmars design. The UI transformation is still not finished.
+
+Also added a little exception handling, so it shouldn't exit abruptly.
+
+New features waiting to be done: importing/exporting of templates, opening of the folder structure when finished, maybe adding a new tag that automatically starts up your favorite editor.
