@@ -92,11 +92,11 @@ namespace Structurer
                         string url = streamReader.ReadToEnd();
                         streamReader.Close();
 
-                        //webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(webClient_DownloadFileCompleted);
                         webClient.DownloadFileCompleted += (s, e) => 
                         {
                             this.Text = "Folderizer - Completed";
-                            if (url.IndexOf(".zip") > 0)
+                            
+                            if (webClient.ResponseHeaders["Content-type"].Equals("application/zip"))
                             {
                                 using (ZipFile zipFile = ZipFile.Read(currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1)))
                                 {
@@ -105,12 +105,13 @@ namespace Structurer
                                         entry.Extract(currFolder, ExtractExistingFileAction.OverwriteSilently);
                                     }
                                 }
+                                //Delete the file
+                                File.Delete(currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
                             }
                         };
                         webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
                         this.Text = "Downloading 0%";
                         webClient.DownloadFileAsync(new Uri(url), currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
-                        
                     }
                 }
                 else
