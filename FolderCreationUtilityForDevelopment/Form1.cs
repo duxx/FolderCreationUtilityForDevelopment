@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
@@ -14,17 +8,17 @@ namespace Structurer
 {
     public partial class Form1 : Form
     {
-        private string basePath;
-        private string currFolder;
-        public static string templateFolder = "\\templates\\";
-        public static string contentsFolder = "\\contents\\";
-        public static string downloadsFolder = "\\downloads\\";
+        private string _basePath;
+        private string _currFolder;
+        public static string TemplateFolder = "\\templates\\";
+        public static string ContentsFolder = "\\contents\\";
+        public static string DownloadsFolder = "\\downloads\\";
         
-        private StreamReader streamReader;
-        private StreamWriter streamWriter;
-        private WebClient webClient = new WebClient();
+        private StreamReader _streamReader;
+        private StreamWriter _streamWriter;
+        private readonly WebClient _webClient = new WebClient();
 
-        public static string template;
+        public static string Template;
 
         public Form1()
         {
@@ -33,7 +27,7 @@ namespace Structurer
             GetTemplates();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -41,7 +35,7 @@ namespace Structurer
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2Click(object sender, EventArgs e)
         {
             button2.Enabled = false;
 
@@ -52,11 +46,11 @@ namespace Structurer
                     Directory.CreateDirectory(textBox1.Text);
                 }
 
-                basePath = currFolder = textBox1.Text + "\\";
+                _basePath = _currFolder = textBox1.Text + "\\";
 
                 foreach (string line in textBox2.Lines)
                 {
-                    handleLine(line);
+                    HandleLine(line);
                 }
             }
             catch (Exception ex)
@@ -73,7 +67,7 @@ namespace Structurer
             }
         }
 
-        private void handleLine(string line)
+        private void HandleLine(string line)
         {
             //Case 1: Has no /
             //Case 2: Ends with /
@@ -84,108 +78,108 @@ namespace Structurer
                 //Current folder is currFolder
                 if (line.IndexOf(':') > 0)
                 {
-                    string[] parts = line.Split(':');
-                    string fileName = parts[0];
-                    if (File.Exists(Application.StartupPath + contentsFolder + parts[1] + ".txt"))
+                    var parts = line.Split(':');
+                    var fileName = parts[0];
+                    if (File.Exists(Application.StartupPath + ContentsFolder + parts[1] + ".txt"))
                     {
-                        streamReader = new StreamReader(Application.StartupPath + contentsFolder + parts[1] + ".txt");
-                        string contents = streamReader.ReadToEnd();
-                        streamReader.Close();
+                        _streamReader = new StreamReader(Application.StartupPath + ContentsFolder + parts[1] + ".txt");
+                        string contents = _streamReader.ReadToEnd();
+                        _streamReader.Close();
 
-                        streamWriter = new StreamWriter(currFolder + parts[0]);
-                        streamWriter.Write(contents);
-                        streamWriter.Close();
+                        _streamWriter = new StreamWriter(_currFolder + parts[0]);
+                        _streamWriter.Write(contents);
+                        _streamWriter.Close();
                     }
-                    else if (File.Exists(Application.StartupPath + downloadsFolder + parts[1] + ".txt"))
+                    else if (File.Exists(Application.StartupPath + DownloadsFolder + parts[1] + ".txt"))
                     {
-                        streamReader = new StreamReader(Application.StartupPath + downloadsFolder + parts[1] + ".txt");
-                        string url = streamReader.ReadToEnd();
-                        streamReader.Close();
+                        _streamReader = new StreamReader(Application.StartupPath + DownloadsFolder + parts[1] + ".txt");
+                        var url = _streamReader.ReadToEnd();
+                        _streamReader.Close();
 
-                        webClient.DownloadFileCompleted += (s, e) => 
+                        _webClient.DownloadFileCompleted += (s, e) => 
                         {
                             this.Text = "Folderizer - Completed";
                             
-                            if (webClient.ResponseHeaders["Content-type"].Equals("application/zip"))
+                            if (_webClient.ResponseHeaders["Content-type"].Equals("application/zip"))
                             {
-                                using (ZipFile zipFile = ZipFile.Read(currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1)))
+                                using (ZipFile zipFile = ZipFile.Read(_currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1)))
                                 {
                                     foreach (ZipEntry entry in zipFile)
                                     {
-                                        entry.Extract(currFolder, ExtractExistingFileAction.OverwriteSilently);
+                                        entry.Extract(_currFolder, ExtractExistingFileAction.OverwriteSilently);
                                     }
                                 }
                                 //Delete the file
-                                File.Delete(currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
+                                File.Delete(_currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
                             }
                         };
-                        webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
+                        _webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WebClientDownloadProgressChanged);
                         this.Text = "Downloading 0%";
-                        webClient.DownloadFileAsync(new Uri(url), currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
+                        _webClient.DownloadFileAsync(new Uri(url), _currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
                     }
                 }
                 else
                 {
-                    File.Create(currFolder + line);
+                    File.Create(_currFolder + line);
                 }
             }
             else if (line[line.Length - 1] == '/')
             {
                 //Current folder changes, not a file
-                currFolder = basePath;
-                currFolder += line;
-                Directory.CreateDirectory(currFolder);
+                _currFolder = _basePath;
+                _currFolder += line;
+                Directory.CreateDirectory(_currFolder);
             }
             else if (line.IndexOf('/') > 0)
             {
                 //Current changes +  a file
-                currFolder = basePath;
-                currFolder += line.Substring(0, line.LastIndexOf('/'));
-                Directory.CreateDirectory(currFolder);
-                string line2 = line.Substring(line.LastIndexOf('/'));
+                _currFolder = _basePath;
+                _currFolder += line.Substring(0, line.LastIndexOf('/'));
+                Directory.CreateDirectory(_currFolder);
+                var line2 = line.Substring(line.LastIndexOf('/'));
                 if (line.IndexOf(':') > 0)
                 {
-                    string[] parts = line2.Split(':');
-                    string fileName = parts[0];
-                    if (File.Exists(Application.StartupPath + contentsFolder + parts[1] + ".txt"))
+                    var parts = line2.Split(':');
+                    var fileName = parts[0];
+                    if (File.Exists(Application.StartupPath + ContentsFolder + parts[1] + ".txt"))
                     {
-                        streamReader = new StreamReader(Application.StartupPath + contentsFolder + parts[1] + ".txt");
-                        string contents = streamReader.ReadToEnd();
-                        streamReader.Close();
+                        _streamReader = new StreamReader(Application.StartupPath + ContentsFolder + parts[1] + ".txt");
+                        var contents = _streamReader.ReadToEnd();
+                        _streamReader.Close();
 
-                        streamWriter = new StreamWriter(currFolder + parts[0]);
-                        streamWriter.Write(contents);
-                        streamWriter.Close();
+                        _streamWriter = new StreamWriter(_currFolder + parts[0]);
+                        _streamWriter.Write(contents);
+                        _streamWriter.Close();
                     }
                 }
                 else
                 {
-                    File.Create(currFolder + line2);
+                    File.Create(_currFolder + line2);
                 }
             }
             else
             {
                 //Current folder is basePath
-                currFolder = basePath;
+                _currFolder = _basePath;
                 //Current folder is currFolder
                 if (line.IndexOf(':') > 0)
                 {
-                    string[] parts = line.Split(':');
-                    string fileName = parts[0];
-                    if (File.Exists(Application.StartupPath + contentsFolder + parts[1] + ".txt"))
+                    var parts = line.Split(':');
+                    var fileName = parts[0];
+                    if (File.Exists(Application.StartupPath + ContentsFolder + parts[1] + ".txt"))
                     {
-                        streamReader = new StreamReader(Application.StartupPath + contentsFolder + parts[1] + ".txt");
-                        string contents = streamReader.ReadToEnd();
-                        streamReader.Close();
+                        _streamReader = new StreamReader(Application.StartupPath + ContentsFolder + parts[1] + ".txt");
+                        var contents = _streamReader.ReadToEnd();
+                        _streamReader.Close();
 
-                        streamWriter = new StreamWriter(currFolder + parts[0]);
-                        streamWriter.Write(contents);
-                        streamWriter.Close();
+                        _streamWriter = new StreamWriter(_currFolder + parts[0]);
+                        _streamWriter.Write(contents);
+                        _streamWriter.Close();
                     }
                 }
                 else
                 {
-                    string path = Path.Combine(currFolder, line);
+                    var path = Path.Combine(_currFolder, line);
 
                     if (!File.Exists(path))
                         File.Create(path);
@@ -193,40 +187,40 @@ namespace Structurer
             }
         }
 
-        void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             this.Text = "Downloading " + e.ProgressPercentage + "%";
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == comboBox1.Items.Count - 1)
             {
                 comboBox1.Items.RemoveAt(comboBox1.SelectedIndex);
                 //Save a new template
-                template = textBox2.Text;
-                Form2 form2 = new Form2();
+                Template = textBox2.Text;
+                var form2 = new Form2();
                 if (form2.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (! Directory.Exists(Application.StartupPath + templateFolder))
+                    if (! Directory.Exists(Application.StartupPath + TemplateFolder))
                     {
-                        Directory.CreateDirectory(Application.StartupPath + templateFolder);
+                        Directory.CreateDirectory(Application.StartupPath + TemplateFolder);
                     }
-                    if (File.Exists(Application.StartupPath + templateFolder + form2.textBox1.Text + ".txt"))
+                    if (File.Exists(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt"))
                     {
-                        File.Delete(Application.StartupPath + templateFolder + form2.textBox1.Text + ".txt");
+                        File.Delete(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt");
                     }
-                    streamWriter = new StreamWriter(Application.StartupPath + templateFolder + form2.textBox1.Text + ".txt");
-                    streamWriter.Write(form2.textBox2.Text);
-                    streamWriter.Close();
+                    _streamWriter = new StreamWriter(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt");
+                    _streamWriter.Write(form2.textBox2.Text);
+                    _streamWriter.Close();
                     GetTemplates();
                 }
             }
             else
             {
-                streamReader = new StreamReader(Application.StartupPath + templateFolder + (string)comboBox1.Items[comboBox1.SelectedIndex] + ".txt");
-                textBox2.Text = streamReader.ReadToEnd();
-                streamReader.Close();
+                _streamReader = new StreamReader(Application.StartupPath + TemplateFolder + (string)comboBox1.Items[comboBox1.SelectedIndex] + ".txt");
+                textBox2.Text = _streamReader.ReadToEnd();
+                _streamReader.Close();
             }
         }
 
@@ -235,48 +229,48 @@ namespace Structurer
             comboBox1.Items.Clear();
 
             //Get templates if exists
-            if (Directory.Exists(Application.StartupPath + templateFolder))
+            if (Directory.Exists(Application.StartupPath + TemplateFolder))
             {
-                string[] files = Directory.GetFiles(Application.StartupPath + templateFolder);
-                foreach (string file in files)
+                var files = Directory.GetFiles(Application.StartupPath + TemplateFolder);
+                foreach (var file in files)
                 {
-                    string fileName = file.Substring(file.LastIndexOf('\\') + 1);
+                    var fileName = file.Substring(file.LastIndexOf('\\') + 1);
                     comboBox1.Items.Add(fileName.Substring(0, fileName.LastIndexOf('.')));
                 }
             }
             comboBox1.Items.Add("Save as template...");
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void saveAsANewTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsANewTemplateToolStripMenuItemClick(object sender, EventArgs e)
         {
             //Save a new template
-            template = textBox2.Text;
-            Form2 form2 = new Form2();
+            Template = textBox2.Text;
+            var form2 = new Form2();
             if (form2.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                if (!Directory.Exists(Application.StartupPath + templateFolder))
+                if (!Directory.Exists(Application.StartupPath + TemplateFolder))
                 {
-                    Directory.CreateDirectory(Application.StartupPath + templateFolder);
+                    Directory.CreateDirectory(Application.StartupPath + TemplateFolder);
                 }
-                if (File.Exists(Application.StartupPath + templateFolder + form2.textBox1.Text + ".txt"))
+                if (File.Exists(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt"))
                 {
-                    File.Delete(Application.StartupPath + templateFolder + form2.textBox1.Text + ".txt");
+                    File.Delete(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt");
                 }
-                streamWriter = new StreamWriter(Application.StartupPath + templateFolder + form2.textBox1.Text + ".txt");
-                streamWriter.Write(form2.textBox2.Text);
-                streamWriter.Close();
+                _streamWriter = new StreamWriter(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt");
+                _streamWriter.Write(form2.textBox2.Text);
+                _streamWriter.Close();
                 GetTemplates();
             }
         }
 
-        private void manageContentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private static void ManageContentsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            Form3 form3 = new Form3();
+            var form3 = new Form3();
             if (form3.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
 

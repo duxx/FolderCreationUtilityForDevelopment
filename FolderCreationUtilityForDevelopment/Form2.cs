@@ -14,7 +14,7 @@ namespace Structurer
         public Form2()
         {
             InitializeComponent();
-            textBox2.Text = Form1.template;
+            textBox2.Text = Form1.Template;
         }
 
         private void button1_Click(object sender, EventArgs e)

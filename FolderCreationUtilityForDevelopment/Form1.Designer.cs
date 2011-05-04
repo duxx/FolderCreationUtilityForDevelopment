@@ -74,7 +74,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Choose...";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1Click);
             // 
             // button2
             // 
@@ -84,7 +84,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Create";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2Click);
             // 
             // textBox2
             // 
@@ -102,7 +102,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 5;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1SelectedIndexChanged);
             // 
             // label2
             // 
@@ -142,7 +142,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
             // templatesToolStripMenuItem
             // 
@@ -161,7 +161,7 @@
             this.saveAsANewTemplateToolStripMenuItem.Name = "saveAsANewTemplateToolStripMenuItem";
             this.saveAsANewTemplateToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.saveAsANewTemplateToolStripMenuItem.Text = "Save as template...";
-            this.saveAsANewTemplateToolStripMenuItem.Click += new System.EventHandler(this.saveAsANewTemplateToolStripMenuItem_Click);
+            this.saveAsANewTemplateToolStripMenuItem.Click += new System.EventHandler(this.SaveAsANewTemplateToolStripMenuItemClick);
             // 
             // toolStripSeparator1
             // 
@@ -173,7 +173,7 @@
             this.manageContentsToolStripMenuItem.Name = "manageContentsToolStripMenuItem";
             this.manageContentsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.manageContentsToolStripMenuItem.Text = "Show content manager";
-            this.manageContentsToolStripMenuItem.Click += new System.EventHandler(this.manageContentsToolStripMenuItem_Click);
+            this.manageContentsToolStripMenuItem.Click += new System.EventHandler(ManageContentsToolStripMenuItemClick);
             // 
             // pictureBox1
             // 

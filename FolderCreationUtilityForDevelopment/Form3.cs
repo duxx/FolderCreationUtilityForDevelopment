@@ -51,9 +51,9 @@ namespace Structurer
             button2.Enabled = true;
 
             //Check for snippets files
-            if (File.Exists(Application.StartupPath + Form1.contentsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt"))
+            if (File.Exists(Application.StartupPath + Form1.ContentsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt"))
             {
-                streamReader = new StreamReader(Application.StartupPath + Form1.contentsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt");
+                streamReader = new StreamReader(Application.StartupPath + Form1.ContentsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt");
                 textBox2.Text = (string)listBox1.Items[listBox1.SelectedIndex];
                 textBox4.Text = streamReader.ReadToEnd();
                 textBox3.Text = "";
@@ -63,9 +63,9 @@ namespace Structurer
                 comboBox1.SelectedIndex = 0;
             }
             //Check for url files
-            else if (File.Exists(Application.StartupPath + Form1.downloadsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt"))
+            else if (File.Exists(Application.StartupPath + Form1.DownloadsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt"))
             {
-                streamReader = new StreamReader(Application.StartupPath + Form1.downloadsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt");
+                streamReader = new StreamReader(Application.StartupPath + Form1.DownloadsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt");
                 textBox2.Text = (string)listBox1.Items[listBox1.SelectedIndex];
                 textBox3.Text = streamReader.ReadToEnd();
                 textBox4.Text = "";
@@ -95,24 +95,24 @@ namespace Structurer
             //Save code snippet
             if (comboBox1.SelectedIndex == 0)
             {
-                if (File.Exists(Application.StartupPath + Form1.contentsFolder + textBox2.Text + ".txt."))
+                if (File.Exists(Application.StartupPath + Form1.ContentsFolder + textBox2.Text + ".txt."))
                 {
-                    File.Delete(Application.StartupPath + Form1.contentsFolder + textBox2.Text + ".txt.");
+                    File.Delete(Application.StartupPath + Form1.ContentsFolder + textBox2.Text + ".txt.");
                 }
 
-                streamWriter = new StreamWriter(Application.StartupPath + Form1.contentsFolder + textBox2.Text + ".txt.");
+                streamWriter = new StreamWriter(Application.StartupPath + Form1.ContentsFolder + textBox2.Text + ".txt.");
                 streamWriter.Write(textBox4.Text);
                 streamWriter.Close();
                 UpdateSnippetList();
             }
             else
             {
-                if (File.Exists(Application.StartupPath + Form1.downloadsFolder + textBox2.Text + ".txt."))
+                if (File.Exists(Application.StartupPath + Form1.DownloadsFolder + textBox2.Text + ".txt."))
                 {
-                    File.Delete(Application.StartupPath + Form1.downloadsFolder + textBox2.Text + ".txt.");
+                    File.Delete(Application.StartupPath + Form1.DownloadsFolder + textBox2.Text + ".txt.");
                 }
 
-                streamWriter = new StreamWriter(Application.StartupPath + Form1.downloadsFolder + textBox2.Text + ".txt.");
+                streamWriter = new StreamWriter(Application.StartupPath + Form1.DownloadsFolder + textBox2.Text + ".txt.");
                 streamWriter.Write(textBox3.Text);
                 streamWriter.Close();
                 UpdateSnippetList();
@@ -124,12 +124,12 @@ namespace Structurer
             listBox1.Items.Clear();
 
             //Code snippets
-            if (! Directory.Exists(Application.StartupPath + Form1.contentsFolder))
+            if (! Directory.Exists(Application.StartupPath + Form1.ContentsFolder))
             {
-                Directory.CreateDirectory(Application.StartupPath + Form1.contentsFolder);
+                Directory.CreateDirectory(Application.StartupPath + Form1.ContentsFolder);
             }
 
-            string[] files = Directory.GetFiles(Application.StartupPath + Form1.contentsFolder);
+            string[] files = Directory.GetFiles(Application.StartupPath + Form1.ContentsFolder);
             foreach (string file in files)
             {
                 string fileName = file.Substring(file.LastIndexOf('\\') + 1);
@@ -137,12 +137,12 @@ namespace Structurer
             }
 
             //Urls
-            if (!Directory.Exists(Application.StartupPath + Form1.downloadsFolder))
+            if (!Directory.Exists(Application.StartupPath + Form1.DownloadsFolder))
             {
-                Directory.CreateDirectory(Application.StartupPath + Form1.downloadsFolder);
+                Directory.CreateDirectory(Application.StartupPath + Form1.DownloadsFolder);
             }
 
-            files = Directory.GetFiles(Application.StartupPath + Form1.downloadsFolder);
+            files = Directory.GetFiles(Application.StartupPath + Form1.DownloadsFolder);
             foreach (string file in files)
             {
                 string fileName = file.Substring(file.LastIndexOf('\\') + 1);
@@ -153,13 +153,13 @@ namespace Structurer
         private void button2_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex < 0) return;
-            if (File.Exists(Application.StartupPath + Form1.contentsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt"))
+            if (File.Exists(Application.StartupPath + Form1.ContentsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt"))
             {
-                File.Delete(Application.StartupPath + Form1.contentsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt");
+                File.Delete(Application.StartupPath + Form1.ContentsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt");
             }
-            else if (File.Exists(Application.StartupPath + Form1.downloadsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt"))
+            else if (File.Exists(Application.StartupPath + Form1.DownloadsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt"))
             {
-                File.Delete(Application.StartupPath + Form1.downloadsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt");
+                File.Delete(Application.StartupPath + Form1.DownloadsFolder + (string)listBox1.Items[listBox1.SelectedIndex] + ".txt");
             }
             UpdateSnippetList();
         }
