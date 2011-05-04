@@ -48,7 +48,7 @@ namespace Structurer
 
                 _basePath = _currFolder = textBox1.Text + "\\";
 
-                foreach (string line in textBox2.Lines)
+                foreach (var line in textBox2.Lines)
                 {
                     HandleLine(line);
                 }
@@ -60,9 +60,8 @@ namespace Structurer
             finally
             {
                 button2.Enabled = true;
-                string myPath = textBox1.Text;
-                System.Diagnostics.Process prc = new System.Diagnostics.Process();
-                prc.StartInfo.FileName = myPath;
+                var myPath = textBox1.Text;
+                var prc = new System.Diagnostics.Process {StartInfo = {FileName = myPath}};
                 prc.Start();
             }
         }
@@ -83,7 +82,7 @@ namespace Structurer
                     if (File.Exists(Application.StartupPath + ContentsFolder + parts[1] + ".txt"))
                     {
                         _streamReader = new StreamReader(Application.StartupPath + ContentsFolder + parts[1] + ".txt");
-                        string contents = _streamReader.ReadToEnd();
+                        var contents = _streamReader.ReadToEnd();
                         _streamReader.Close();
 
                         _streamWriter = new StreamWriter(_currFolder + parts[0]);
@@ -99,19 +98,17 @@ namespace Structurer
                         _webClient.DownloadFileCompleted += (s, e) => 
                         {
                             this.Text = "Folderizer - Completed";
-                            
-                            if (_webClient.ResponseHeaders["Content-type"].Equals("application/zip"))
+
+                            if (!_webClient.ResponseHeaders["Content-type"].Equals("application/zip")) return;
+                            using (ZipFile zipFile = ZipFile.Read(_currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1)))
                             {
-                                using (ZipFile zipFile = ZipFile.Read(_currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1)))
+                                foreach (ZipEntry entry in zipFile)
                                 {
-                                    foreach (ZipEntry entry in zipFile)
-                                    {
-                                        entry.Extract(_currFolder, ExtractExistingFileAction.OverwriteSilently);
-                                    }
+                                    entry.Extract(_currFolder, ExtractExistingFileAction.OverwriteSilently);
                                 }
-                                //Delete the file
-                                File.Delete(_currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
                             }
+                            //Delete the file
+                            File.Delete(_currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
                         };
                         _webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WebClientDownloadProgressChanged);
                         this.Text = "Downloading 0%";
@@ -251,21 +248,19 @@ namespace Structurer
             //Save a new template
             Template = textBox2.Text;
             var form2 = new Form2();
-            if (form2.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            if (form2.ShowDialog(this) != System.Windows.Forms.DialogResult.OK) return;
+            if (!Directory.Exists(Application.StartupPath + TemplateFolder))
             {
-                if (!Directory.Exists(Application.StartupPath + TemplateFolder))
-                {
-                    Directory.CreateDirectory(Application.StartupPath + TemplateFolder);
-                }
-                if (File.Exists(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt"))
-                {
-                    File.Delete(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt");
-                }
-                _streamWriter = new StreamWriter(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt");
-                _streamWriter.Write(form2.textBox2.Text);
-                _streamWriter.Close();
-                GetTemplates();
+                Directory.CreateDirectory(Application.StartupPath + TemplateFolder);
             }
+            if (File.Exists(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt"))
+            {
+                File.Delete(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt");
+            }
+            _streamWriter = new StreamWriter(Application.StartupPath + TemplateFolder + form2.textBox1.Text + ".txt");
+            _streamWriter.Write(form2.textBox2.Text);
+            _streamWriter.Close();
+            GetTemplates();
         }
 
         private static void ManageContentsToolStripMenuItemClick(object sender, EventArgs e)
