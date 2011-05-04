@@ -66,6 +66,10 @@ namespace Structurer
             finally
             {
                 button2.Enabled = true;
+                string myPath = textBox1.Text;
+                System.Diagnostics.Process prc = new System.Diagnostics.Process();
+                prc.StartInfo.FileName = myPath;
+                prc.Start();
             }
         }
 

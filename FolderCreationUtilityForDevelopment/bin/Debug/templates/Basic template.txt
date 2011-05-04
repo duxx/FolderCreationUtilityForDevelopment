@@ -1,0 +1,6 @@
+index.html:html
+images/
+css/
+/style.css
+js/
+/script.js
