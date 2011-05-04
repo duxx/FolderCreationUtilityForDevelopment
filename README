@@ -4,6 +4,16 @@ The version 1.0.0.3 now supports nested folder structures and has some changes t
 
 Also added a little exception handling, so it shouldn't exit abruptly.
 
+4/5/2011 -- ADDED: Importing/Exporting of templates
+4/5/2011 -- ADDED: Opening of the folder when finished
+4/5/2011 -- MODIFIED: Changed source code formatting to comply with some standards
+
 2/10/2011 -- FIXED: You can now download stuff from webscripts (ex. http://www.codeigniter.com/download.php) and the archive will be automatically extracted if it was a zip file.
 
-New features waiting to be done: importing/exporting of templates, opening of the folder structure when finished, maybe adding a new tag that automatically starts up your favorite editor.
+New features waiting to be done: 
+- maybe adding a new tag that automatically starts up your favorite editor.
+- codebase refractoring
+- notification area icon for quick access
+
+NOTES:
+- the template import does not verify the file or its contents
