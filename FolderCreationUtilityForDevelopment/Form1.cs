@@ -13,6 +13,7 @@ namespace Structurer
         public static string TemplateFolder = "\\templates\\";
         public static string ContentsFolder = "\\contents\\";
         public static string DownloadsFolder = "\\downloads\\";
+        public static string ExportFolder = "\\export\\";
         
         private StreamReader _streamReader;
         private StreamWriter _streamWriter;
@@ -263,13 +264,59 @@ namespace Structurer
             GetTemplates();
         }
 
-        private static void ManageContentsToolStripMenuItemClick(object sender, EventArgs e)
+        private void ManageContentsToolStripMenuItemClick(object sender, EventArgs e)
         {
             var form3 = new Form3();
             if (form3.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
 
             }
+        }
+
+        private void ExportTemplateToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using (var zipFile = new ZipFile())
+            {
+                if (!Directory.Exists(Application.StartupPath + TemplateFolder)
+                    ||!Directory.Exists(Application.StartupPath + DownloadsFolder)
+                    ||!Directory.Exists(Application.StartupPath + ContentsFolder)) return;
+
+                if (!Directory.Exists(Application.StartupPath + ExportFolder))
+                    Directory.CreateDirectory(Application.StartupPath + ExportFolder);
+
+                zipFile.AddDirectory(Application.StartupPath + TemplateFolder, "templates");
+                zipFile.AddDirectory(Application.StartupPath + DownloadsFolder, "downloads");
+                zipFile.AddDirectory(Application.StartupPath + ContentsFolder, "contents");
+
+                var myPath = Application.StartupPath + ExportFolder + Environment.UserName + "_Folderizer.zip";
+                zipFile.Save(myPath);
+                myPath = Application.StartupPath + ExportFolder;
+                var prc = new System.Diagnostics.Process { StartInfo = { FileName = myPath } };
+                prc.Start();
+            }
+        }
+
+        private void ImportTemplatesToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            var file = openFileDialog1.FileName;
+            try
+            {
+                using (var zipFile = ZipFile.Read(file))
+                {
+                    foreach (var entry in zipFile)
+                    {
+                        entry.Extract(Application.StartupPath, ExtractExistingFileAction.OverwriteSilently);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error importing templates.\n" + ex.ToString(), "Error - Folderizer",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            MessageBox.Show("Templates imported successfully", "Folderizer", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
         }
     }
 }

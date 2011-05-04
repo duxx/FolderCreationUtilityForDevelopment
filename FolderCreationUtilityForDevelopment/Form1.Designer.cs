@@ -1,4 +1,6 @@
-﻿namespace Structurer
+﻿using System;
+
+namespace Structurer
 {
     partial class Form1
     {
@@ -44,7 +46,11 @@
             this.saveAsANewTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.manageContentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importTemplatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +125,8 @@
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.templatesToolStripMenuItem});
+            this.templatesToolStripMenuItem,
+            this.importExportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -140,7 +147,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
@@ -173,7 +180,31 @@
             this.manageContentsToolStripMenuItem.Name = "manageContentsToolStripMenuItem";
             this.manageContentsToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.manageContentsToolStripMenuItem.Text = "Show content manager";
-            this.manageContentsToolStripMenuItem.Click += new System.EventHandler(ManageContentsToolStripMenuItemClick);
+            this.manageContentsToolStripMenuItem.Click += new System.EventHandler(this.ManageContentsToolStripMenuItemClick);
+            // 
+            // importExportToolStripMenuItem
+            // 
+            this.importExportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importTemplatesToolStripMenuItem,
+            this.exportTemplateToolStripMenuItem});
+            this.importExportToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            this.importExportToolStripMenuItem.Name = "importExportToolStripMenuItem";
+            this.importExportToolStripMenuItem.Size = new System.Drawing.Size(93, 21);
+            this.importExportToolStripMenuItem.Text = "Import/Export";
+            // 
+            // importTemplatesToolStripMenuItem
+            // 
+            this.importTemplatesToolStripMenuItem.Name = "importTemplatesToolStripMenuItem";
+            this.importTemplatesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.importTemplatesToolStripMenuItem.Text = "Import template...";
+            this.importTemplatesToolStripMenuItem.Click += new System.EventHandler(this.ImportTemplatesToolStripMenuItemClick);
+            // 
+            // exportTemplateToolStripMenuItem
+            // 
+            this.exportTemplateToolStripMenuItem.Name = "exportTemplateToolStripMenuItem";
+            this.exportTemplateToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.exportTemplateToolStripMenuItem.Text = "Export template";
+            this.exportTemplateToolStripMenuItem.Click += new System.EventHandler(this.ExportTemplateToolStripMenuItemClick);
             // 
             // pictureBox1
             // 
@@ -183,6 +214,10 @@
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "Zip files|*.zip";
             // 
             // Form1
             // 
@@ -231,6 +266,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem manageContentsToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem importExportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importTemplatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportTemplateToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
