@@ -43,6 +43,8 @@ namespace Structurer
 
         private void button2_Click(object sender, EventArgs e)
         {
+            button2.Enabled = false;
+
             try
             {
                 if (!Directory.Exists(textBox1.Text))
@@ -60,6 +62,10 @@ namespace Structurer
             catch (Exception ex)
             {
                 MessageBox.Show("The following error occured: " + ex.ToString(), "Folderizer - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                button2.Enabled = true;
             }
         }
 
@@ -175,7 +181,10 @@ namespace Structurer
                 }
                 else
                 {
-                    File.Create(currFolder + line);
+                    string path = Path.Combine(currFolder, line);
+
+                    if (!File.Exists(path))
+                        File.Create(path);
                 }
             }
         }
