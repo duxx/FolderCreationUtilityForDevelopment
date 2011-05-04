@@ -14,3 +14,6 @@ New features waiting to be done:
 - maybe adding a new tag that automatically starts up your favorite editor.
 - codebase refractoring
 - notification area icon for quick access
+
+NOTES:
+- the template import does not verify the file or its contents
