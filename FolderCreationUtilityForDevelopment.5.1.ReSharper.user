@@ -1,0 +1,147 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="textBox1" priority="0" />
+      <Item value="ZipFile`0" priority="3" />
+      <Item value="using" priority="1" />
+      <Item value="zipFile" priority="6" />
+      <Item value="new" priority="0" />
+      <Item value="ZipFile" priority="0" />
+      <Item value="if" priority="2" />
+      <Item value="Directory`0" priority="4" />
+      <Item value="Application`0" priority="9" />
+      <Item value="TemplateFolder" priority="2" />
+      <Item value="return" priority="0" />
+      <Item value="Path`0" priority="0" />
+      <Item value="SystemInformation`0" priority="0" />
+      <Item value="Environment`0" priority="0" />
+      <Item value="DownloadsFolder" priority="1" />
+      <Item value="ContentsFolder" priority="1" />
+      <Item value="public" priority="0" />
+      <Item value="static" priority="0" />
+      <Item value="string" priority="0" />
+      <Item value="ExportFolder" priority="3" />
+      <Item value="var" priority="1" />
+      <Item value="myPath" priority="2" />
+      <Item value="openFileDialog1" priority="1" />
+      <Item value="System" priority="0" />
+      <Item value="Windows" priority="0" />
+      <Item value="Forms" priority="0" />
+      <Item value="DialogResult`0" priority="0" />
+      <Item value="foreach" priority="0" />
+      <Item value="file" priority="0" />
+      <Item value="entry" priority="0" />
+      <Item value="ExtractExistingFileAction`0" priority="0" />
+      <Item value="try" priority="0" />
+      <Item value="MessageBox`0" priority="1" />
+      <Item value="e" priority="0" />
+      <Item value="OK" priority="1" />
+      <Item value="Error" priority="0" />
+      <Item value="finally" priority="0" />
+      <Item value="Information" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.TextBox">
+      <Item value="Text" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Directory">
+      <Item value="Exists`0" priority="3" />
+      <Item value="CreateDirectory`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.Application">
+      <Item value="StartupPath" priority="8" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Path">
+      <Item value="Combine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Indexer" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Environment">
+      <Item value="UserName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Ionic.Zip.ZipFile">
+      <Item value="AddDirectory`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.OpenFileDialog">
+      <Item value="ShowDialog`0" priority="0" />
+      <Item value="FileName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.DialogResult">
+      <Item value="OK" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Ionic.Zip.ZipFile">
+      <Item value="Read`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Ionic.Zip.ZipEntry">
+      <Item value="Extract`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Ionic.Zip.ExtractExistingFileAction">
+      <Item value="OverwriteSilently" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Windows.Forms.MessageBox">
+      <Item value="Show`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Exception">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form3.cs" caret="0" fromTop="0" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form2.cs" caret="0" fromTop="0" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.Designer.cs" caret="13670" fromTop="19" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12923" fromTop="14" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="7068" fromTop="24" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="6723" fromTop="19" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="6019" fromTop="23" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="5539" fromTop="24" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="3490" fromTop="17" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2567" fromTop="11" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="637" fromTop="15" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="1585" fromTop="17" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2011" fromTop="8" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2912" fromTop="30" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="3772" fromTop="14" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="10416" fromTop="19" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.Designer.cs" caret="15131" fromTop="18" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13700" fromTop="28" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12651" fromTop="9" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="493" fromTop="15" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12444" fromTop="25" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12024" fromTop="22" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.Designer.cs" caret="13670" fromTop="25" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13700" fromTop="19" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.Designer.cs" caret="13670" fromTop="19" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12524" fromTop="21" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13700" fromTop="21" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="11199" fromTop="15" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13700" fromTop="15" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13519" fromTop="18" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13519" fromTop="21" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12957" fromTop="13" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13677" fromTop="27" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13391" fromTop="21" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>
