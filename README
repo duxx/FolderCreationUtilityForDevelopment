@@ -4,6 +4,9 @@ The version 1.0.0.3 now supports nested folder structures and has some changes t
 
 Also added a little exception handling, so it shouldn't exit abruptly.
 
+5/5/2011 -- FIXED: Don't open the folder until the file has finished downloading (if a file is being downloaded)
+5/5/2011 -- FIXED: Keep create button disabled while downloading
+
 4/5/2011 -- ADDED: Importing/Exporting of templates
 4/5/2011 -- ADDED: Opening of the folder when finished
 4/5/2011 -- MODIFIED: Changed source code formatting to comply with some standards
