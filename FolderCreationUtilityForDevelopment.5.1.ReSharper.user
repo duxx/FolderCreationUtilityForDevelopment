@@ -15,7 +15,7 @@
       <Item value="zipFile" priority="6" />
       <Item value="new" priority="0" />
       <Item value="ZipFile" priority="0" />
-      <Item value="if" priority="2" />
+      <Item value="if" priority="3" />
       <Item value="Directory`0" priority="4" />
       <Item value="Application`0" priority="9" />
       <Item value="TemplateFolder" priority="2" />
@@ -29,7 +29,7 @@
       <Item value="static" priority="0" />
       <Item value="string" priority="0" />
       <Item value="ExportFolder" priority="3" />
-      <Item value="var" priority="1" />
+      <Item value="var" priority="4" />
       <Item value="myPath" priority="2" />
       <Item value="openFileDialog1" priority="1" />
       <Item value="System" priority="0" />
@@ -40,13 +40,29 @@
       <Item value="file" priority="0" />
       <Item value="entry" priority="0" />
       <Item value="ExtractExistingFileAction`0" priority="0" />
-      <Item value="try" priority="0" />
+      <Item value="try" priority="2" />
       <Item value="MessageBox`0" priority="1" />
       <Item value="e" priority="0" />
       <Item value="OK" priority="1" />
       <Item value="Error" priority="0" />
       <Item value="finally" priority="0" />
       <Item value="Information" priority="0" />
+      <Item value="line" priority="7" />
+      <Item value="switch" priority="0" />
+      <Item value="case" priority="0" />
+      <Item value="break" priority="2" />
+      <Item value="default" priority="0" />
+      <Item value="File`0" priority="1" />
+      <Item value="_basePath" priority="2" />
+      <Item value="target" priority="1" />
+      <Item value="target2" priority="0" />
+      <Item value="private" priority="0" />
+      <Item value="bool" priority="0" />
+      <Item value="false" priority="2" />
+      <Item value="_isDownloading" priority="3" />
+      <Item value="true" priority="1" />
+      <Item value="while" priority="0" />
+      <Item value="button2" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Windows.Forms.TextBox">
       <Item value="Text" priority="0" />
@@ -63,6 +79,8 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.String">
       <Item value="Indexer" priority="0" />
+      <Item value="IndexOf`0" priority="5" />
+      <Item value="Substring`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Environment">
       <Item value="UserName" priority="0" />
@@ -92,45 +110,52 @@
     <ItemStatistics item="Qualified:System.Exception">
       <Item value="ToString`0" priority="0" />
     </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.File">
+      <Item value="Delete`0" priority="0" />
+      <Item value="Move`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.Button">
+      <Item value="Enabled" priority="1" />
+    </ItemStatistics>
   </CompletionStatisticsManager>
   <RecentFiles>
     <RecentFiles>
       <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form3.cs" caret="0" fromTop="0" />
       <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form2.cs" caret="0" fromTop="0" />
       <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.Designer.cs" caret="13670" fromTop="19" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12923" fromTop="14" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2098" fromTop="17" />
     </RecentFiles>
     <RecentEdits>
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="7068" fromTop="24" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="6723" fromTop="19" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="6019" fromTop="23" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="5539" fromTop="24" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="3490" fromTop="17" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2567" fromTop="11" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="637" fromTop="15" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="1585" fromTop="17" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2011" fromTop="8" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2912" fromTop="30" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="3772" fromTop="14" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="10416" fromTop="19" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="4016" fromTop="14" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="10968" fromTop="19" />
       <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.Designer.cs" caret="15131" fromTop="18" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13700" fromTop="28" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12651" fromTop="9" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="14252" fromTop="28" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13203" fromTop="9" />
       <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="493" fromTop="15" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12444" fromTop="25" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12024" fromTop="22" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12996" fromTop="25" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12576" fromTop="22" />
       <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.Designer.cs" caret="13670" fromTop="25" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13700" fromTop="19" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="14252" fromTop="19" />
       <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.Designer.cs" caret="13670" fromTop="19" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12524" fromTop="21" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13700" fromTop="21" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="11199" fromTop="15" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13700" fromTop="15" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13519" fromTop="18" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13519" fromTop="21" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="12957" fromTop="13" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13677" fromTop="27" />
-      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13391" fromTop="21" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13076" fromTop="21" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="14252" fromTop="21" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="11751" fromTop="15" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="14252" fromTop="15" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="14071" fromTop="18" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="14071" fromTop="21" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13509" fromTop="13" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="14229" fromTop="27" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="13943" fromTop="21" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="7019" fromTop="33" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="7019" fromTop="29" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="7019" fromTop="13" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="7019" fromTop="20" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2297" fromTop="30" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="4899" fromTop="24" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="7019" fromTop="16" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="5349" fromTop="33" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="3916" fromTop="12" />
+      <File id="7D1C400D-8EF9-4F58-AD97-2C10331969D7/f:Form1.cs" caret="2098" fromTop="17" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>

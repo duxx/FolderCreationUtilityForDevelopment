@@ -18,6 +18,7 @@ namespace Structurer
         private StreamReader _streamReader;
         private StreamWriter _streamWriter;
         private readonly WebClient _webClient = new WebClient();
+        private bool _isDownloading = false;
 
         public static string Template;
 
@@ -60,10 +61,13 @@ namespace Structurer
             }
             finally
             {
-                button2.Enabled = true;
-                var myPath = textBox1.Text;
-                var prc = new System.Diagnostics.Process {StartInfo = {FileName = myPath}};
-                prc.Start();
+                if (!_isDownloading)
+                {
+                    button2.Enabled = true;
+                    var myPath = textBox1.Text;
+                    var prc = new System.Diagnostics.Process {StartInfo = {FileName = myPath}};
+                    prc.Start();
+                }
             }
         }
 
@@ -98,6 +102,8 @@ namespace Structurer
 
                         _webClient.DownloadFileCompleted += (s, e) => 
                         {
+                            _isDownloading = false;
+                            button2.Enabled = true;
                             this.Text = "Folderizer - Completed";
 
                             if (!_webClient.ResponseHeaders["Content-type"].Equals("application/zip")) return;
@@ -110,10 +116,16 @@ namespace Structurer
                             }
                             //Delete the file
                             File.Delete(_currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
+
+                            var myPath = textBox1.Text;
+                            var prc = new System.Diagnostics.Process { StartInfo = { FileName = myPath } };
+                            prc.Start();
                         };
                         _webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WebClientDownloadProgressChanged);
                         this.Text = "Downloading 0%";
                         _webClient.DownloadFileAsync(new Uri(url), _currFolder + "\\" + url.Substring(url.LastIndexOf('/') + 1));
+                        _isDownloading = true;
+                        button2.Enabled = false;
                     }
                 }
                 else
